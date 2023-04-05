@@ -1,7 +1,7 @@
 // swift-tools-version:5.7
 
 //
-// This source file is part of the TemplatePackage open source project
+// This source file is part of the CardinalKit open-source project
 // 
 // SPDX-FileCopyrightText: 2022 Stanford University and the project authors (see CONTRIBUTORS.md)
 // 
@@ -12,21 +12,28 @@ import PackageDescription
 
 
 let package = Package(
-    name: "TemplatePackage",
+    name: "CardinalKitContact",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v16)
     ],
     products: [
-        .library(name: "TemplatePackage", targets: ["TemplatePackage"])
+        .library(name: "CardinalKitContact", targets: ["CardinalKitContact"])
+    ],
+    dependencies: [
+        .package(url: "https://github.com/StanfordBDHG/CardinalKit", .upToNextMinor(from: "0.3.5"))
     ],
     targets: [
         .target(
-            name: "TemplatePackage"
+            name: "CardinalKitContact",
+            dependencies: [
+                .product(name: "Views", package: "CardinalKit")
+            ]
         ),
         .testTarget(
-            name: "TemplatePackageTests",
+            name: "CardinalKitContactTests",
             dependencies: [
-                .target(name: "TemplatePackage")
+                .target(name: "CardinalKitContact")
             ]
         )
     ]
