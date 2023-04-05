@@ -14,7 +14,7 @@ SPDX-License-Identifier: MIT
 
 The CardinalKit Contact module provides user interface components to display customizable contact information in an application.
 
-For more information, please refer to the [API documentation](https://swiftpackageindex.com/StanfordBDHG/CardinalKitOnboarding/documentation).
+For more information, please refer to the [API documentation](https://swiftpackageindex.com/StanfordBDHG/CardinalKitContact/documentation).
 
 
 ## The CardinalKit Template Application
