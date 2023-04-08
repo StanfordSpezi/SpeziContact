@@ -21,13 +21,13 @@ let package = Package(
         .library(name: "CardinalKitContact", targets: ["CardinalKitContact"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordBDHG/CardinalKit", .upToNextMinor(from: "0.3.5"))
+        .package(url: "https://github.com/StanfordBDHG/CardinalKitViews", .upToNextMinor(from: "0.2.0"))
     ],
     targets: [
         .target(
             name: "CardinalKitContact",
             dependencies: [
-                .product(name: "Views", package: "CardinalKit")
+                .product(name: "CardinalKitViews", package: "CardinalKitViews")
             ]
         ),
         .testTarget(
