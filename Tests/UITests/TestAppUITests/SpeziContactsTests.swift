@@ -29,6 +29,8 @@ final class ContactsTests: XCTestCase {
         app.buttons.matching(identifier: "Text").element(boundBy: 0).tap()
         app.alerts["Text"].scrollViews.otherElements.buttons["Ok"].tap()
         
+        app.swipeUp()
+        
         XCTAssertEqual(app.buttons.matching(identifier: "Email").count, 2)
         app.buttons.matching(identifier: "Email").element(boundBy: 0).tap()
         app.alerts["Email"].scrollViews.otherElements.buttons["Ok"].tap()
