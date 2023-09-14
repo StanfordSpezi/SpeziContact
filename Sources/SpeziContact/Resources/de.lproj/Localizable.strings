@@ -16,3 +16,7 @@
 "CONTACT_MANUAL_DISMISS" = "Ok";
 
 "CONTACT_ADDRESS" = "Adresse";
+
+"CONTACT %@" = "Kontakt: %@";
+"TITLE_AT_ORG" = "bei";
+"ADDRESS_NAVIGATE %@" = "Navigate to Address: %@";
