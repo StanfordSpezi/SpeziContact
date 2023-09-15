@@ -21,7 +21,7 @@ let package = Package(
         .library(name: "SpeziContact", targets: ["SpeziContact"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordSpezi/SpeziViews", .upToNextMinor(from: "0.4.0"))
+        .package(url: "https://github.com/StanfordSpezi/SpeziViews", .upToNextMinor(from: "0.5.0"))
     ],
     targets: [
         .target(
