@@ -15,12 +15,12 @@ Views to display contact information.
 
 ## Overview
 
-The Spezi Contact Swift Package provides a [Spezi Component](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/component) (``SpeziContact``) that enables displaying contact information in an application.
+The Spezi Contact Swift Package provides a [Spezi Component](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/component) (SpeziContact) that enables displaying contact information in an application.
 
 @Row {
     @Column {
         @Image(source: "Overview", alt: "Screenshow showing a contact rendered within the Spezi Template Application.") {
-            A ``ContactView`` rendered in the Spezi Template Application.
+            A ``ContactsList`` rendered in the Spezi Template Application.
         }
     }
 }
@@ -87,5 +87,5 @@ The contact views that can be used to display contact information.
 
 Use the ``Contact`` and ``ContactOption`` to configure the contact views.
 
-- ``Contact/Contact``
+- ``Contact``
 - ``ContactOption``
