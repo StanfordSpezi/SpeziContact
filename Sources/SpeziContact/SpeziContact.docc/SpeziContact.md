@@ -42,6 +42,9 @@ The ``ContactView`` and ``ContactsList`` can display the contact information in 
 The following example shows how ``Contact``s can be created to encode an individual's contact information and displayed in a ``ContactsList`` within a SwiftUI View.
 
 ```swift
+import SpeziContact
+import SwiftUI
+
 struct ContactsExample: View {
     let contact = Contact(
         image: Image(systemName: "figure.wave.circle"),
