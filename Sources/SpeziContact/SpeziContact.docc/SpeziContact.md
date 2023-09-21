@@ -45,6 +45,7 @@ The following example shows how ``Contact``s can be created to encode an individ
 import SpeziContact
 import SwiftUI
 
+
 struct ContactsExample: View {
     let contact = Contact(
         image: Image(systemName: "figure.wave.circle"),
