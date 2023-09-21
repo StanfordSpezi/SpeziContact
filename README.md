@@ -16,11 +16,11 @@ SPDX-License-Identifier: MIT
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FStanfordSpezi%2FSpeziContact%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/StanfordSpezi/SpeziContact)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FStanfordSpezi%2FSpeziContact%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/StanfordSpezi/SpeziContact)
 
-The Spezi Contact module provides user interface components to display customizable contact information in an application.
+User interface components to display contact information in an application.
 
 ## Overview
 
-The Spezi Contact Swift Package provides a [Spezi Component](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/component) ([`SpeziContact`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact)) that enables displaying contact information in an application.
+The Spezi Contact Swift Package provides a [Spezi Component](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/component) ([`SpeziContact`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact)) that enables displaying contact information in an application in a card-like layout.
 
 | ![Screenshot showing a ContactsList rendered within the Spezi Template Application.](Sources/SpeziContact/SpeziContact.docc/Resources/Overview.png#gh-light-mode-only) ![Screenshot showing a ContactsList rendered within the Spezi Template Application.](Sources/SpeziContact/SpeziContact.docc/Resources/Overview-dark.png#gh-dark-mode-only) |
  |:---:|
