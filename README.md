@@ -20,7 +20,7 @@ The Spezi Contact module provides user interface components to display customiza
 
 ## Overview
 
-The Spezi Contact Swift Package provides a [Spezi Component](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/component) (``SpeziContact``) that enables displaying contact information in an application.
+The Spezi Contact Swift Package provides a [Spezi Component](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/component) [`SpeziContact`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact) that enables displaying contact information in an application.
 
 | ![Screenshot showing a contact rendered within in the Spezi Template Application.](Sources/SpeziContact/SpeziContact.docc/Resources/Overview.png#gh-light-mode-only) ![Screenshot showing a contact rendered within in the Spezi Template Application.](Sources/SpeziContact/SpeziContact.docc/Resources/Overview-dark.png#gh-dark-mode-only) |
  |:---:|
