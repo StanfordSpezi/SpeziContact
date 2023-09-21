@@ -24,7 +24,7 @@ The Spezi Contact Swift Package provides a [Spezi Component](https://swiftpackag
 
 | ![Screenshot showing a ContactsList rendered within the Spezi Template Application.](Sources/SpeziContact/SpeziContact.docc/Resources/Overview.png#gh-light-mode-only) ![Screenshot showing a ContactsList rendered within the Spezi Template Application.](Sources/SpeziContact/SpeziContact.docc/Resources/Overview-dark.png#gh-dark-mode-only) |
  |:---:|
- | A ``ContactsList`` rendered in the Spezi Template Application. |
+ | A [`ContactsList`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contactslist) rendered in the Spezi Template Application. |
 
 ## Setup
 
@@ -83,7 +83,7 @@ For more information, please refer to the [API documentation](https://swiftpacka
 
 ## The Spezi Template Application
 
-The [Spezi Template Application](https://github.com/StanfordSpezi/SpeziTemplateApplication) provides a great starting point and example using the `SpeziContact` module.
+The [Spezi Template Application](https://github.com/StanfordSpezi/SpeziTemplateApplication) provides a great starting point and example using the [`SpeziContact`](https://swiftpackageindex.com/stanfordspezi/spezicontact) module.
 
 
 ## Contributing
