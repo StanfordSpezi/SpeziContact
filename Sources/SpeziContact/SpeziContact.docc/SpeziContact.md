@@ -12,7 +12,28 @@ SPDX-License-Identifier: MIT
 
 Views to display contact information.
 
-## Contact
+
+## Overview
+
+The Spezi Contact Swift Package provides a [Spezi Component](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/component) (``SpeziContact``) that enables displaying contact information in an application.
+
+@Row {
+    @Column {
+        @Image(source: "Overview", alt: "Screenshow showing a contact rendered within the Spezi Template Application.") {
+            A ``ContactView`` rendered in the Spezi Template Application
+        }
+    }
+}
+
+## Setup
+
+### 1. Add Spezi Contact as a Dependency
+
+You need to add the Spezi Mock Web Service Swift package to
+[your app in Xcode](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app#) or
+[Swift package](https://developer.apple.com/documentation/xcode/creating-a-standalone-swift-package-with-xcode#Add-a-dependency-on-another-Swift-package).
+
+## Example
 
 The Contact module enables displaying contact information in an application. 
 Information can be encoded in ``Contact`` and ``ContactOption`` to configure the contact views.
