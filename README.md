@@ -37,7 +37,7 @@ You need to add the Spezi Contact Swift package to
 ## Example
 
 The Contact module enables displaying contact information in an application. 
-Information can be encoded in ``Contact`` and ``ContactOption`` to configure the contact views.
+Information can be encoded in [`Contact`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contact) and [`ContactOption`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contactoption) to configure the contact views.
 The [`ContactView`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contactview) and [`ContactsList`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contactslist) can display the contact information in a card-like layout and list.
 
 The following example shows how [`Contact`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contact)s can be created to encode an individual's contact information and displayed in a [`ContactsList`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contactslist) within a SwiftUI [`View`](https://developer.apple.com/documentation/swiftui/view).
