@@ -24,13 +24,13 @@ The Spezi Contact Swift Package provides a [Spezi Component](https://swiftpackag
 
 | ![Screenshot showing a contact rendered within in the Spezi Template Application.](Sources/SpeziContact/SpeziContact.docc/Resources/Overview.png#gh-light-mode-only) ![Screenshot showing a contact rendered within in the Spezi Template Application.](Sources/SpeziContact/SpeziContact.docc/Resources/Overview-dark.png#gh-dark-mode-only) |
  |:---:|
- | A ``Contact`` rendered in the Spezi Template Application. |
+ | A ``ContactsList`` rendered in the Spezi Template Application. |
 
 ## Setup
 
 ### 1. Add Spezi Contact as a Dependency
 
-You need to add the Spezi Mock Web Service Swift package to
+You need to add the Spezi Contact Swift package to
 [your app in Xcode](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app#) or
 [Swift package](https://developer.apple.com/documentation/xcode/creating-a-standalone-swift-package-with-xcode#Add-a-dependency-on-another-Swift-package).
 
@@ -40,7 +40,7 @@ The Contact module enables displaying contact information in an application.
 Information can be encoded in ``Contact`` and ``ContactOption`` to configure the contact views.
 The ``ContactView`` and ``ContactsList`` can display the contact information in a card-like layout and list.
 
-The following example shows how ``Contact``s can be created to encode an individual's contact information and displayed in a ``ContactsList`` within a SwiftUI View.
+The following example shows how ``Contact``s can be created to encode an individual's contact information and displayed in a ``ContactsList`` within a SwiftUI ``View``.
 
 ```swift
 struct ContactsExample: View {
