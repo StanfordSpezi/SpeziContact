@@ -20,7 +20,7 @@ The Spezi Contact Swift Package provides a [Spezi Component](https://swiftpackag
 @Row {
     @Column {
         @Image(source: "Overview", alt: "Screenshow showing a contact rendered within the Spezi Template Application.") {
-            A ``ContactView`` rendered in the Spezi Template Application
+            A ``ContactView`` rendered in the Spezi Template Application.
         }
     }
 }
