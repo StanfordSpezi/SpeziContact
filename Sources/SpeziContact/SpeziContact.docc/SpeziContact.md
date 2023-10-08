@@ -15,7 +15,7 @@ Views to display contact information.
 
 ## Overview
 
-The Spezi Contact Swift Package provides a [Spezi Component](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/component) (SpeziContact) that enables displaying contact information in an application.
+The Spezi Contact Swift Package provides views and infrastructure to display contact information in an application.
 
 @Row {
     @Column {
