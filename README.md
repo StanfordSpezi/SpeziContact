@@ -16,14 +16,74 @@ SPDX-License-Identifier: MIT
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FStanfordSpezi%2FSpeziContact%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/StanfordSpezi/SpeziContact)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FStanfordSpezi%2FSpeziContact%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/StanfordSpezi/SpeziContact)
 
-The Spezi Contact module provides user interface components to display customizable contact information in an application.
+Views to display contact information.
+
+## Overview
+
+The Spezi Contact Swift Package provides views and infrastructure to display contact information in an application.
+
+| ![Screenshot showing a ContactsList rendered within the Spezi Template Application.](Sources/SpeziContact/SpeziContact.docc/Resources/Overview.png#gh-light-mode-only) ![Screenshot showing a ContactsList rendered within the Spezi Template Application.](Sources/SpeziContact/SpeziContact.docc/Resources/Overview~dark.png#gh-dark-mode-only) |
+ |:---:|
+ | A [`ContactsList`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contactslist) rendered in the Spezi Template Application. |
+
+## Setup
+
+### Add Spezi Contact as a Dependency
+
+You need to add the Spezi Contact Swift package to
+[your app in Xcode](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app#) or
+[Swift package](https://developer.apple.com/documentation/xcode/creating-a-standalone-swift-package-with-xcode#Add-a-dependency-on-another-Swift-package).
+
+## Example
+
+The Contact module enables displaying contact information in an application. 
+Information can be encoded in [`Contact`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contact) and [`ContactOption`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contactoption) to configure the contact views.
+The [`ContactView`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contactview) and [`ContactsList`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contactslist) can display the contact information in a card-like layout and list.
+
+The following example shows how [`Contact`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contact)s can be created to encode an individual's contact information and displayed in a [`ContactsList`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contactslist) within a SwiftUI [`View`](https://developer.apple.com/documentation/swiftui/view).
+
+```swift
+import SpeziContact
+import SwiftUI
+
+
+struct ContactsExample: View {
+    let contact = Contact(
+        image: Image(systemName: "figure.wave.circle"),
+        name: PersonNameComponents(givenName: "Leland", familyName: "Stanford"),
+        title: "Founder",
+        description: """
+        Leland Stanford is the founder of Stanford University.
+        """,
+        organization: "Stanford University",
+        address: {
+            let address = CNMutablePostalAddress()
+            address.country = "USA"
+            address.state = "CA"
+            address.postalCode = "94305"
+            address.city = "Stanford"
+            address.street = "450 Serra Mall"
+            return address
+        }(),
+        contactOptions: [
+            .call("+1 (650) 123-4567"),
+            .text("+1 (650) 123-4567"),
+            .email(addresses: ["example@stanford.edu"], subject: "Hi!")
+        ]
+    )
+    
+    var body: some View {
+        ContactsList(contacts: [contact])
+    }
+}
+```
 
 For more information, please refer to the [API documentation](https://swiftpackageindex.com/StanfordSpezi/SpeziContact/documentation).
 
 
 ## The Spezi Template Application
 
-The [Spezi Template Application](https://github.com/StanfordSpezi/SpeziTemplateApplication) provides a great starting point and example using the `SpeziContact` module.
+The [Spezi Template Application](https://github.com/StanfordSpezi/SpeziTemplateApplication) provides a great starting point and example using the [`SpeziContact`](https://swiftpackageindex.com/stanfordspezi/spezicontact) module.
 
 
 ## Contributing
