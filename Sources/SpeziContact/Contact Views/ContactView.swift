@@ -8,6 +8,7 @@
 
 import Contacts
 import MessageUI
+import SpeziPersonalInfo
 import SpeziViews
 import SwiftUI
 
@@ -62,7 +63,7 @@ public struct ContactView: View {
             header
             Divider()
             if let description = contact.description {
-                Label(description, textStyle: .subheadline)
+                Label(verbatim: description, textStyle: .subheadline)
                     .padding(.vertical, 4)
             }
             HorizontalGeometryReader { _ in
