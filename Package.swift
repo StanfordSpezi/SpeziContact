@@ -1,4 +1,4 @@
-// swift-tools-version:5.7
+// swift-tools-version:5.9
 
 //
 // This source file is part of the Stanford Spezi open-source project
@@ -15,19 +15,20 @@ let package = Package(
     name: "SpeziContact",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v16)
+        .iOS(.v17)
     ],
     products: [
         .library(name: "SpeziContact", targets: ["SpeziContact"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordSpezi/SpeziViews", .upToNextMinor(from: "0.5.0"))
+        .package(url: "https://github.com/StanfordSpezi/SpeziViews", .upToNextMinor(from: "0.6.0"))
     ],
     targets: [
         .target(
             name: "SpeziContact",
             dependencies: [
-                .product(name: "SpeziViews", package: "SpeziViews")
+                .product(name: "SpeziViews", package: "SpeziViews"),
+                .product(name: "SpeziPersonalInfo", package: "SpeziViews")
             ]
         ),
         .testTarget(
