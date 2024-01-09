@@ -11,8 +11,7 @@ import SwiftUI
 
 
 struct ContactsTestsView: View {
-    @MainActor
-    static let leland = Contact(
+    @MainActor static let leland = Contact(
         name: PersonNameComponents(
             givenName: "Leland",
             familyName: "Stanford"
@@ -77,8 +76,8 @@ struct ContactsTestsView: View {
             ContactOption(image: Image(systemName: "icloud.fill"), title: "Cloud", action: { })
         ]
     )
-    
-    
+
+
     var body: some View {
         ContactsList(contacts: [ContactsTestsView.mock, ContactsTestsView.leland])
             .navigationTitle("Contacts")

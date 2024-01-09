@@ -244,7 +244,7 @@ struct ContactView_Previews: PreviewProvider {
             givenName: "Leland",
             familyName: "Stanford"
         ),
-        image: Image(systemName: "figure.wave.circle"), // swiftlint:disable:this accessibility_label_for_image
+        image: Image(systemName: "figure.wave.circle"),
         title: "University Founder",
         description: """
                      Amasa Leland Stanford (March 9, 1824 – June 21, 1893) was an American industrialist and politician. [...] \
@@ -266,7 +266,7 @@ struct ContactView_Previews: PreviewProvider {
             .text("+1 (650) 723-2300"),
             .email(addresses: ["contact@stanford.edu"]),
             ContactOption(
-                image: Image(systemName: "safari.fill"), // swiftlint:disable:this accessibility_label_for_image
+                image: Image(systemName: "safari.fill"),
                 title: "Website",
                 action: {}
             )
@@ -274,7 +274,6 @@ struct ContactView_Previews: PreviewProvider {
     )
 
 
-    
     static var previews: some View {
         ContactView(contact: Self.leland)
         ContactView(contact: Self.mock)
