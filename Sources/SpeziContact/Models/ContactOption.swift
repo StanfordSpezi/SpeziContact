@@ -11,6 +11,18 @@ import SwiftUI
 
 
 /// Customizable way to get in contact with an individual and usually connected to a ``Contact``.
+///
+/// The following example demonstrates the usage of the `Contact`.
+/// ```swift
+/// ContactOption(
+///     image: Image(systemName: "safari.fill"),
+///     title: "More Info",
+///     action: {
+///         // Action that should be performed on pressing this ContactOption (i.e. opening a link for a website)...
+///     }
+/// )
+/// ```
+///
 public struct ContactOption {
     let id = UUID()
     /// The image representing the ``ContactOption`` in the user interface.
