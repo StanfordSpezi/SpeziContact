@@ -45,10 +45,10 @@ import SwiftUI
 ///     ]
 /// }
 /// ```
-/// 
+///
 /// Here is an additional example of a view  (`ContactRow`), that takes a single ``Contact`` and displays their
 /// name, image, title, and organization.
-///``` swift
+/// ``` swift
 /// struct ContactRow: View {
 ///     let contact: Contact
 ///     var body: some View {
