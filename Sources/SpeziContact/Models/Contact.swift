@@ -21,7 +21,7 @@ import SwiftUI
 ///         Contact(
 ///             name: PersonNameComponents(
 ///                 givenName: "First",
-///                  familyName: "Last"
+///                 familyName: "Last"
 ///             ),
 ///             image: Image(systemName: "figure.wave.circle"),
 ///             title: "Title",
@@ -45,7 +45,29 @@ import SwiftUI
 ///     ]
 /// }
 /// ```
-///
+/// 
+/// Here is an additional example of a view  (`ContactRow`), that takes a single ``Contact`` and displays their
+/// name, image, title, and organization.
+///``` swift
+/// struct ContactRow: View {
+///     let contact: Contact
+///     var body: some View {
+///         VStack(alignment: .leading) {
+///             \\ Accessing different properties of the contact
+///             contact.image
+///                 .resizable()
+///                 .frame(width: 50, height: 50)
+///                 .cornerRadius(25)
+///             Text("\(contact.name.givenName) \(contact.name.familyName)")
+///                 .font(.headline)
+///             Text(contact.title)
+///                 .font(.subheadline)
+///             Text(contact.organization)
+///                 .font(.subheadline)
+///         }
+///     }
+/// }
+/// ```
 public struct Contact {
     let id = UUID()
     /// The name of the individual. Ideally provide at least a first and given name.

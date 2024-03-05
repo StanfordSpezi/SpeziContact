@@ -14,36 +14,21 @@ import SwiftUI
 ///
 /// ### Usage
 ///
-/// The following example demonstrates the usage of the ``ContactOption`` within a ``Contact``.
+/// The following example demonstrates the usage of the ``ContactOption`` within a ``Contact``. For additional details on the implementation of a ``Contact``, please refer to its page.
 /// ```swift
 /// Contact(
-///     name: PersonNameComponents(
-///         givenName: "First",
-///         familyName: "Last"
-///     ),
-///     image: Image(systemName: "figure.wave.circle"),
-///     title: "Title",
-///     description: "Description",
-///     organization: "Organization",
-///     address: {
-///         let address = CNMutablePostalAddress()
-///         address.country = "USA"
-///         address.state = "CA"
-///         address.postalCode = "94305"
-///         address.city = "City"
-///         address.street = "123 ABC St"
-///         return address
-///     }(),
+///     // other parameters for Contact
 ///     contactOptions: [
 ///         .call("+1 (123) 456-7890"),
 ///         .text("+1 (123) 456-7890"),
 ///         .email(addresses: ["email@address.com"]),
-///          ContactOption(
-///             image: Image(systemName: "safari.fill"),
-///             title: "More Info",
-///             action: {
-///                 // Action that should be performed on pressing this ContactOption (i.e. opening a link for a website)...
-///              }
+///         // Here is where the custom ContactOption can be used as a part of the contactOptions list
+///         ContactOption(
+///            image: Image(systemName: "safari.fill"),
+///            title: "More Info",
+///            action: {
+///                // Action that should be performed on pressing this ContactOption (i.e. opening a link for a website)...
+///             }
 ///         )
 ///     ]
 /// )
