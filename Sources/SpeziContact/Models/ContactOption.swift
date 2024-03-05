@@ -12,17 +12,42 @@ import SwiftUI
 
 /// Customizable way to get in contact with an individual and usually connected to a ``Contact``.
 ///
-/// The following example demonstrates the usage of the `Contact`.
+/// ### Usage
+///
+/// The following example demonstrates the usage of the ``ContactOption`` within a ``Contact``.
 /// ```swift
-/// ContactOption(
-///     image: Image(systemName: "safari.fill"),
-///     title: "More Info",
-///     action: {
-///         // Action that should be performed on pressing this ContactOption (i.e. opening a link for a website)...
-///     }
+/// Contact(
+///     name: PersonNameComponents(
+///         givenName: "First",
+///         familyName: "Last"
+///     ),
+///     image: Image(systemName: "figure.wave.circle"),
+///     title: "Title",
+///     description: "Description",
+///     organization: "Organization",
+///     address: {
+///         let address = CNMutablePostalAddress()
+///         address.country = "USA"
+///         address.state = "CA"
+///         address.postalCode = "94305"
+///         address.city = "City"
+///         address.street = "123 ABC St"
+///         return address
+///     }(),
+///     contactOptions: [
+///         .call("+1 (123) 456-7890"),
+///         .text("+1 (123) 456-7890"),
+///         .email(addresses: ["email@address.com"]),
+///          ContactOption(
+///             image: Image(systemName: "safari.fill"),
+///             title: "More Info",
+///             action: {
+///                 // Action that should be performed on pressing this ContactOption (i.e. opening a link for a website)...
+///              }
+///         )
+///     ]
 /// )
 /// ```
-///
 public struct ContactOption {
     let id = UUID()
     /// The image representing the ``ContactOption`` in the user interface.

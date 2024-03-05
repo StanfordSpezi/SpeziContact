@@ -12,32 +12,38 @@ import SwiftUI
 
 /// Encodes the contact information.
 ///
-/// The following example demonstrates the usage of the `Contact`.
+/// ### Usage
+///
+/// The following example demonstrates the usage of the ``Contact`` in a ``ContactsList``.
 /// ```swift
-/// Contact(
-///     name: PersonNameComponents(
-///           givenName: "First",
-///           familyName: "Last"
-///     ),
-///     image: Image(systemName: "figure.wave.circle"),
-///     title: "Title",
-///     description: "Description",
-///     organization: "Organization",
-///     address: {
-///         let address = CNMutablePostalAddress()
-///         address.country = "USA"
-///         address.state = "CA"
-///         address.postalCode = "94305"
-///         address.city = "City"
-///         address.street = "123 ABC St"
-///         return address
-///     }(),
-///     contactOptions: [
-///         .call("+1 (123) 456-7890"),
-///         .text("+1 (123) 456-7890"),
-///         .email(addresses: ["email@address.com"]),
+/// struct Contacts: View {
+///     let contacts = [
+///         Contact(
+///             name: PersonNameComponents(
+///                 givenName: "First",
+///                  familyName: "Last"
+///             ),
+///             image: Image(systemName: "figure.wave.circle"),
+///             title: "Title",
+///             description: "Description",
+///             organization: "Organization",
+///             address: {
+///                 let address = CNMutablePostalAddress()
+///                 address.country = "USA"
+///                 address.state = "CA"
+///                 address.postalCode = "94305"
+///                 address.city = "City"
+///                 address.street = "123 ABC St"
+///                 return address
+///             }(),
+///             contactOptions: [
+///                 .call("+1 (123) 456-7890"),
+///                 .text("+1 (123) 456-7890"),
+///                 .email(addresses: ["email@address.com"]),
+///             ]
+///         )
 ///     ]
-/// )
+/// }
 /// ```
 ///
 public struct Contact {
