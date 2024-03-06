@@ -14,11 +14,11 @@ import SwiftUI
 ///
 /// ### Usage
 ///
-/// The following examples demonstrates the usage of the ``Contact`` in a ``ContactsList`` (`Contacts`) and an example view
-/// (`ContactRow`), that takes a single ``Contact`` and displays the corresopnding name, image, title, and organization.
+/// The following example demonstrates the initialization of a ``Contact`` and an example view
+/// that displays its corresopnding name, image, title, and organization.
 /// ```swift
-/// struct Contacts: View {
-///     let contacts = [
+/// struct ContactRow: View {
+///     let contact =
 ///         Contact(
 ///             name: PersonNameComponents(
 ///                 givenName: "First",
@@ -43,11 +43,7 @@ import SwiftUI
 ///                 .email(addresses: ["email@address.com"]),
 ///             ]
 ///         )
-///     ]
-/// }
 ///
-/// struct ContactRow: View {
-///     let contact: Contact
 ///     var body: some View {
 ///         VStack(alignment: .leading) {
 ///             \\ Accessing different properties of the contact
