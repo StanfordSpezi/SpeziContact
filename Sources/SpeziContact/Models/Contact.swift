@@ -15,7 +15,7 @@ import SwiftUI
 /// ### Usage
 ///
 /// The following example demonstrates the initialization of a ``Contact`` and an example view
-/// that displays its corresopnding name, image, title, and organization.
+/// that displays its corresponding ``Contact`` name, image, title, and organization.
 /// ```swift
 /// struct ContactRow: View {
 ///     let contact =
@@ -46,7 +46,7 @@ import SwiftUI
 ///
 ///     var body: some View {
 ///         VStack(alignment: .leading) {
-///             \\ Accessing different properties of the contact
+///             // Accessing different properties of the contact
 ///             contact.image
 ///                 .resizable()
 ///                 .frame(width: 50, height: 50)
