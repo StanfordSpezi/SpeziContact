@@ -14,7 +14,7 @@ import SwiftUI
 ///
 /// ### Usage
 ///
-/// The following example demonstrates the usage of the ``ContactOption`` within a ``Contact``. For additional details on the implementation of a ``Contact``, please refer to its page.
+/// The following example demonstrates the usage of the ``ContactOption`` within a ``Contact``. For additional details, refer to the ``Contact`` documentation.
 /// ```swift
 /// Contact(
 ///     // other parameters for Contact
