@@ -23,6 +23,16 @@ jobs:
       artifactname: SpeziContact.xcresult
       runsonlabels: '["macOS", "self-hosted"]'
       scheme: SpeziContact
+  buildandtestlatest:
+    name: Build and Test Swift Package iOS Latest
+    uses: StanfordSpezi/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
+    with:
+      runsonlabels: '["macOS", "self-hosted"]'
+      xcodeversion: latest
+      swiftVersion: 6
+      scheme: SpeziContact
+      resultBundle: SpeziContactLatest.xcresult
+      artifactname: SpeziContactLatest.xcresult
   buildandtestuitests:
     name: Build and Test UI Tests
     uses: StanfordSpezi/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
