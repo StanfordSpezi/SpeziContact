@@ -30,6 +30,7 @@ jobs:
       runsonlabels: '["macOS", "self-hosted"]'
       xcodeversion: latest
       swiftVersion: 6
+      scheme: SpeziContact
       resultBundle: SpeziContactLatest.xcresult
       artifactname: SpeziContactLatest.xcresult
   buildandtestuitests:
