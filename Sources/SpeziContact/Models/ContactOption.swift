@@ -107,7 +107,8 @@ extension ContactOption {
             UIApplication.shared.open(url)
         }
     }
-    
+
+
     private struct WebsiteContactOptionAction: ContactOptionAction {
         let url: URL
         
@@ -173,8 +174,7 @@ extension ContactOption {
             action: WebsiteContactOptionAction(url: url)
         )
     }
-    
-    
+
 
     @MainActor
     private static func presentAlert(title: String, message: String) {
