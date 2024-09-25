@@ -9,9 +9,7 @@
 
 /// A type handling the action to be performed by a ContactOption.
 public protocol ContactOptionAction {
-    
     /// Handles the event of the contact option being selected by performing the action.
     @MainActor
     func handle()
-    
 }
