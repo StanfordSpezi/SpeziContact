@@ -55,15 +55,6 @@ public struct ContactOption {
 
 
 extension ContactOption {
-    @MainActor private static var rootViewController: UIViewController? {
-        UIApplication
-            .shared
-            .connectedScenes
-            .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-            .first?
-            .rootViewController
-    }
-    
     private struct CallContactOptionAction: ContactOptionAction {
         let number: String
         
@@ -115,6 +106,16 @@ extension ContactOption {
             }
             UIApplication.shared.open(url)
         }
+    }
+
+
+    @MainActor private static var rootViewController: UIViewController? {
+        UIApplication
+            .shared
+            .connectedScenes
+            .compactMap { ($0 as? UIWindowScene)?.keyWindow }
+            .first?
+            .rootViewController
     }
 
 
