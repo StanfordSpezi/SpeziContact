@@ -78,42 +78,7 @@ extension ContactOption {
             UIApplication.shared.open(url)
         }
     }
-    
-    
-    /// A ``ContactOption`` encoding a possibility to call an individual using a phone number.
-    /// - Parameter number: The phone number to be called.
-    public static func call(_ number: String) -> ContactOption {
-        ContactOption(
-            image: Image(systemName: "phone.fill"),
-            title: String(localized: "Call", bundle: .module, comment: "Contact Option"),
-            action: CallContactOptionAction(number: number)
-        )
-    }
-    
-    private struct TextContactOptionAction: ContactOptionAction {
-        let number: String
-        
-        func handle() {
-            guard let url = URL(string: "sms:\(number)"), UIApplication.shared.canOpenURL(url) else {
-                presentAlert(
-                    title: String(localized: "Text", bundle: .module),
-                    message: String(localized: "Text unavailable. You can manually reach out to \(number)", bundle: .module, comment: "Text unavailable. Manual approach.")
-                )
-                return
-            }
-            UIApplication.shared.open(url)
-        }
-    }
-    
-    /// A ``ContactOption`` encoding a possibility to text an individual using a phone numer.
-    /// - Parameter number: The phone number to text to.
-    public static func text(_ number: String) -> ContactOption {
-        ContactOption(
-            image: Image(systemName: "message.fill"),
-            title: String(localized: "Text", bundle: .module, comment: "Contact Option"),
-            action: TextContactOptionAction(number: number)
-        )
-    }
+
     
     private struct EmailContactOptionAction: ContactOptionAction {
         let addresses: [String]
@@ -134,6 +99,44 @@ extension ContactOption {
             }
             UIApplication.shared.open(url)
         }
+    }
+
+
+    private struct TextContactOptionAction: ContactOptionAction {
+        let number: String
+        
+        func handle() {
+            guard let url = URL(string: "sms:\(number)"), UIApplication.shared.canOpenURL(url) else {
+                presentAlert(
+                    title: String(localized: "Text", bundle: .module),
+                    message: String(localized: "Text unavailable. You can manually reach out to \(number)", bundle: .module, comment: "Text unavailable. Manual approach.")
+                )
+                return
+            }
+            UIApplication.shared.open(url)
+        }
+    }
+
+
+    /// A ``ContactOption`` encoding a possibility to call an individual using a phone number.
+    /// - Parameter number: The phone number to be called.
+    public static func call(_ number: String) -> ContactOption {
+        ContactOption(
+            image: Image(systemName: "phone.fill"),
+            title: String(localized: "Call", bundle: .module, comment: "Contact Option"),
+            action: CallContactOptionAction(number: number)
+        )
+    }
+
+    
+    /// A ``ContactOption`` encoding a possibility to text an individual using a phone numer.
+    /// - Parameter number: The phone number to text to.
+    public static func text(_ number: String) -> ContactOption {
+        ContactOption(
+            image: Image(systemName: "message.fill"),
+            title: String(localized: "Text", bundle: .module, comment: "Contact Option"),
+            action: TextContactOptionAction(number: number)
+        )
     }
     
     

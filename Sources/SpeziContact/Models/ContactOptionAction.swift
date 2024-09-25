@@ -6,6 +6,12 @@
 // SPDX-License-Identifier: MIT
 //
 
+
+/// A type handling the action to be performed by a ContactOption.
 public protocol ContactOptionAction {
-    @MainActor func handle()
+    
+    /// Handles the event of the contact option being selected by performing the action.
+    @MainActor
+    func handle()
+    
 }
