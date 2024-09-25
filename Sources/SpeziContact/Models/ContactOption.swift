@@ -38,7 +38,7 @@ public struct ContactOption {
     /// The title representing the `ContactOption` in the user interface.
     public let title: String
     /// The action that should be taken when a user chooses to use the `ContactOption`.
-    public let action: @MainActor () -> Void
+    public let action: any ContactOptionAction
 
     
     /// Encodes a way to get in contact with an individual and usually connected to a `Contact`.
@@ -46,7 +46,7 @@ public struct ContactOption {
     ///   - image: The image representing the `ContactOption` in the user interface.
     ///   - title: The title representing the `ContactOption` in the user interface.
     ///   - action: The action that should be taken when a user chooses to use the `ContactOption`.
-    public init(image: Image, title: String, action: @escaping @MainActor () -> Void) {
+    public init(image: Image, title: String, action: any ContactOptionAction) {
         self.image = image
         self.title = title
         self.action = action
@@ -64,18 +64,40 @@ extension ContactOption {
             .rootViewController
     }
     
+    private struct CallContactOptionAction: ContactOptionAction {
+        let number: String
+        
+        func handle() {
+            guard let url = URL(string: "tel://\(number)"), UIApplication.shared.canOpenURL(url) else {
+                presentAlert(
+                    title: String(localized: "Call", bundle: .module),
+                    message: String(localized: "Call unavailable. You can manually reach out to \(number)", bundle: .module, comment: "Call unavailable. Manual approach.")
+                )
+                return
+            }
+            UIApplication.shared.open(url)
+        }
+    }
+    
     
     /// A ``ContactOption`` encoding a possibility to call an individual using a phone number.
     /// - Parameter number: The phone number to be called.
     public static func call(_ number: String) -> ContactOption {
         ContactOption(
             image: Image(systemName: "phone.fill"),
-            title: String(localized: "Call", bundle: .module, comment: "Contact Option")
-        ) {
-            guard let url = URL(string: "tel://\(number)"), UIApplication.shared.canOpenURL(url) else {
+            title: String(localized: "Call", bundle: .module, comment: "Contact Option"),
+            action: CallContactOptionAction(number: number)
+        )
+    }
+    
+    private struct TextContactOptionAction: ContactOptionAction {
+        let number: String
+        
+        func handle() {
+            guard let url = URL(string: "sms:\(number)"), UIApplication.shared.canOpenURL(url) else {
                 presentAlert(
-                    title: String(localized: "Call", bundle: .module),
-                    message: String(localized: "Call unavailable. You can manually reach out to \(number)", bundle: .module, comment: "Call unavailable. Manual approach.")
+                    title: String(localized: "Text", bundle: .module),
+                    message: String(localized: "Text unavailable. You can manually reach out to \(number)", bundle: .module, comment: "Text unavailable. Manual approach.")
                 )
                 return
             }
@@ -88,12 +110,25 @@ extension ContactOption {
     public static func text(_ number: String) -> ContactOption {
         ContactOption(
             image: Image(systemName: "message.fill"),
-            title: String(localized: "Text", bundle: .module, comment: "Contact Option")
-        ) {
-            guard let url = URL(string: "sms:\(number)"), UIApplication.shared.canOpenURL(url) else {
+            title: String(localized: "Text", bundle: .module, comment: "Contact Option"),
+            action: TextContactOptionAction(number: number)
+        )
+    }
+    
+    private struct EmailContactOptionAction: ContactOptionAction {
+        let addresses: [String]
+        let subject: String?
+        
+        func handle() {
+            guard let subject = (subject ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                  let url = URL(string: "mailto:\(addresses.joined(separator: ";"))?subject=\(subject)"), UIApplication.shared.canOpenURL(url) else {
                 presentAlert(
-                    title: String(localized: "Text", bundle: .module),
-                    message: String(localized: "Text unavailable. You can manually reach out to \(number)", bundle: .module, comment: "Text unavailable. Manual approach.")
+                    title: String(localized: "Email", bundle: .module),
+                    message: String(
+                        localized: "Email unavailable. You can manually reach out to \(addresses.joined(separator: ", "))",
+                        bundle: .module,
+                        comment: "Email unavailable. Manual approach."
+                    )
                 )
                 return
             }
@@ -109,22 +144,9 @@ extension ContactOption {
     public static func email(addresses: [String], subject: String? = nil) -> ContactOption {
         ContactOption(
             image: Image(systemName: "envelope.fill"),
-            title: String(localized: "Email", bundle: .module, comment: "Contact Option")
-        ) {
-            guard let subject = (subject ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-                  let url = URL(string: "mailto:\(addresses.joined(separator: ";"))?subject=\(subject)"), UIApplication.shared.canOpenURL(url) else {
-                presentAlert(
-                    title: String(localized: "Email", bundle: .module),
-                    message: String(
-                        localized: "Email unavailable. You can manually reach out to \(addresses.joined(separator: ", "))",
-                        bundle: .module,
-                        comment: "Email unavailable. Manual approach."
-                    )
-                )
-                return
-            }
-            UIApplication.shared.open(url)
-        }
+            title: String(localized: "Email", bundle: .module, comment: "Contact Option"),
+            action: EmailContactOptionAction(addresses: addresses, subject: subject)
+        )
     }
 
     @MainActor
