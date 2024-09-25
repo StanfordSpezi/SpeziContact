@@ -107,6 +107,16 @@ extension ContactOption {
             UIApplication.shared.open(url)
         }
     }
+    
+    private struct WebsiteContactOptionAction: ContactOptionAction {
+        let url: URL
+        
+        func handle() {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+    }
 
 
     @MainActor private static var rootViewController: UIViewController? {
@@ -152,6 +162,19 @@ extension ContactOption {
             action: EmailContactOptionAction(addresses: addresses, subject: subject)
         )
     }
+    
+    /// A ``ContactOption`` encoding a possibility to open a website.
+    /// - Parameters:
+    ///   - url: The url to open.
+    public static func website(url: URL) -> ContactOption {
+        ContactOption(
+            image: Image(systemName: "safari.fill"),
+            title: String(localized: "Website", bundle: .module, comment: "Contact Option"),
+            action: WebsiteContactOptionAction(url: url)
+        )
+    }
+    
+    
 
     @MainActor
     private static func presentAlert(title: String, message: String) {
