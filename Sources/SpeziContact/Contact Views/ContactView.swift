@@ -236,7 +236,7 @@ struct ContactView_Previews: PreviewProvider {
                 .call("+1 (234) 567-892"),
                 .text("+1 (234) 567-893"),
                 .email(addresses: ["lelandstanford@stanford.edu"], subject: "Hi Leland!"),
-                ContactOption(image: Image(systemName: "icloud.fill"), title: "Cloud", action: { })
+                ContactOption(image: Image(systemName: "icloud.fill"), title: "Cloud") {}
             ]
         )
     }
@@ -269,16 +269,18 @@ struct ContactView_Previews: PreviewProvider {
             .email(addresses: ["contact@stanford.edu"]),
             ContactOption(
                 image: Image(systemName: "safari.fill"),
-                title: "Website",
-                action: {}
-            )
+                title: "Website"
+            ) {}
         ]
     )
 
 
     static var previews: some View {
-        ContactView(contact: Self.leland)
-        ContactView(contact: Self.mock)
+        Group {
+            ContactView(contact: Self.leland)
+            ContactView(contact: Self.mock)
+        }
+        .padding(20)
     }
 }
 #endif
