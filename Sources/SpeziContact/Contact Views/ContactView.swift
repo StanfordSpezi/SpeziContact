@@ -181,7 +181,7 @@ public struct ContactView: View {
     
     
     private func contactButton(_ contactOption: ContactOption) -> some View {
-        Button(action: contactOption.action.handle) {
+        Button(action: contactOption.action) {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundStyle(Color(uiColor: .tertiarySystemFill))
@@ -212,10 +212,6 @@ public struct ContactView: View {
 
 #if DEBUG
 struct ContactView_Previews: PreviewProvider {
-    struct EmptyContactActionOption: ContactOptionAction {
-        func handle() {}
-    }
-    
     static var mock: Contact {
         Contact(
             name: PersonNameComponents(givenName: "Paul", familyName: "Schmiedmayer"),
@@ -240,7 +236,7 @@ struct ContactView_Previews: PreviewProvider {
                 .call("+1 (234) 567-892"),
                 .text("+1 (234) 567-893"),
                 .email(addresses: ["lelandstanford@stanford.edu"], subject: "Hi Leland!"),
-                ContactOption(image: Image(systemName: "icloud.fill"), title: "Cloud", action: EmptyContactActionOption())
+                ContactOption(image: Image(systemName: "icloud.fill"), title: "Cloud") {}
             ]
         )
     }
@@ -273,9 +269,8 @@ struct ContactView_Previews: PreviewProvider {
             .email(addresses: ["contact@stanford.edu"]),
             ContactOption(
                 image: Image(systemName: "safari.fill"),
-                title: "Website",
-                action: EmptyContactActionOption()
-            )
+                title: "Website"
+            ) {}
         ]
     )
 

@@ -103,6 +103,9 @@
         }
       }
     },
+    "Could not open url. You may want to manually access `%@`." : {
+      "comment" : "Contact Option"
+    },
     "Email" : {
       "comment" : "Contact Option",
       "localizations" : {
