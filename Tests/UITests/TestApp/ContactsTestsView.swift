@@ -9,10 +9,6 @@
 import SpeziContact
 import SwiftUI
 
-private struct EmptyContactOptionAction: ContactOptionAction {
-    func handle() {}
-}
-
 struct ContactsTestsView: View {
     @MainActor static let leland = Contact(
         name: PersonNameComponents(
@@ -68,7 +64,7 @@ struct ContactsTestsView: View {
             .text("+1 (234) 567-893"),
             .email(addresses: ["lelandstanford@stanford.edu"], subject: "Hi Leland!"),
             // swiftlint:disable:next accessibility_label_for_image
-            ContactOption(image: Image(systemName: "icloud.fill"), title: "Cloud", action: EmptyContactOptionAction())
+            ContactOption(image: Image(systemName: "icloud.fill"), title: "Cloud") {}
         ]
     )
 
