@@ -15,6 +15,12 @@
             "state" : "translated",
             "value" : " at %@"
           }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "på %@"
+          }
         }
       }
     },
@@ -31,6 +37,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Address"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adress"
           }
         }
       }
@@ -49,6 +61,12 @@
             "state" : "translated",
             "value" : "Address: %@"
           }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adress: %@"
+          }
         }
       }
     },
@@ -65,6 +83,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Call"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ring"
           }
         }
       }
@@ -83,6 +107,12 @@
             "state" : "translated",
             "value" : "The device is not setup to make a call. You can manually reach out to %@."
           }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enheten är inte inställd för att ringa. Du kan manuellt kontakta %@."
+          }
         }
       }
     },
@@ -99,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contact: %@"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontakt: %@"
           }
         }
       }
@@ -117,6 +153,12 @@
             "state" : "translated",
             "value" : "Email"
           }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-post"
+          }
         }
       }
     },
@@ -134,6 +176,12 @@
             "state" : "translated",
             "value" : "The device is not setup to send email. You can manually reach out to %@."
           }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enheten är inte inställd för att skicka e-post. Du kan manuellt kontakta %@."
+          }
         }
       }
     },
@@ -147,6 +195,12 @@
           }
         },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        },
+        "sv" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ok"
@@ -168,6 +222,12 @@
             "state" : "translated",
             "value" : "Text"
           }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SMS"
+          }
         }
       }
     },
@@ -184,6 +244,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "The device is not setup to send a text. You can manually reach out to %@."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enheten är inte inställd för att skicka SMS. Du kan manuellt kontakta %@."
           }
         }
       }
