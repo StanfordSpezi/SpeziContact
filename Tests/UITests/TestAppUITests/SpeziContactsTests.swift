@@ -25,9 +25,10 @@ final class ContactsTests: XCTestCase {
         XCTAssert(app.staticTexts.element(matching: labelPredicate).exists)
         
         XCTAssertEqual(app.buttons.matching(identifier: "Call").count, 3)
+#if os(iOS)
         app.buttons.matching(identifier: "Call").element(boundBy: 0).tap()
         app.alerts["Call"].scrollViews.otherElements.buttons["Ok"].tap()
-        
+#endif
         XCTAssertEqual(app.buttons.matching(identifier: "Text").count, 2)
         app.buttons.matching(identifier: "Text").element(boundBy: 0).tap()
         if app.alerts["Text"].scrollViews.otherElements.buttons["Ok"].waitForExistence(timeout: 5) {
@@ -40,8 +41,10 @@ final class ContactsTests: XCTestCase {
         }
         
         sleep(2)
+#if os(iOS)
         app.swipeUp()
-        
+#endif
+
         XCTAssertEqual(app.buttons.matching(identifier: "Email").count, 2)
         app.buttons.matching(identifier: "Email").element(boundBy: 0).tap()
         app.alerts["Email"].scrollViews.otherElements.buttons["Ok"].tap()
