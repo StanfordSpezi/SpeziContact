@@ -17,8 +17,10 @@ import SwiftUI
 ///
 /// This view represents the content define in a ``Contact``.
 public struct ContactView: View {
+    @Environment(\.openURL) private var openURL
+
     private let contact: Contact
-    
+
     @State private var contactGridWidth: CGFloat = 300
     @State private var contentElementWidth: CGFloat = 100
     
@@ -201,11 +203,10 @@ public struct ContactView: View {
     private func openMaps() {
         guard let address = contact.address,
               let addressString = CNPostalAddressFormatter().string(from: address).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-              let url = URL(string: "maps://?address=\(addressString)"),
-              UIApplication.shared.canOpenURL(url) else {
+              let url = URL(string: "maps://?address=\(addressString)") else {
             return
         }
-        UIApplication.shared.open(url)
+        openURL(url)
     }
 }
 
