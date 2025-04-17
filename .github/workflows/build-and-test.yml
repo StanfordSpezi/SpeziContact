@@ -41,7 +41,7 @@ jobs:
       resultBundle: SpeziContact-visionOS.xcresult
       runsonlabels: '["macOS", "self-hosted"]'
       scheme: SpeziContact
-      destination: "platform=visionOS Simulator,name=Apple Vision Pro"
+      destination: 'platform=visionOS Simulator,name=Apple Vision Pro'
   buildandtestuitests_ios:
     name: Build and Test UI Tests iOS
     uses: StanfordSpezi/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
@@ -57,9 +57,9 @@ jobs:
       artifactname: TestApp-visionOS.xcresult
       resultBundle: TestApp-visionOS.xcresult
       runsonlabels: '["macOS", "self-hosted"]'
-      path: "Tests/UITests"
+      path: 'Tests/UITests'
       scheme: TestApp
-      destination: "platform=visionOS Simulator,name=Apple Vision Pro"
+      destination: 'platform=visionOS Simulator,name=Apple Vision Pro'
   uploadcoveragereport:
     name: Upload Coverage Report
     needs: [buildandtest_ios, buildandtest_latest, buildandtest_visionos, buildandtestuitests_ios, buildandtestuitests_visionos]
