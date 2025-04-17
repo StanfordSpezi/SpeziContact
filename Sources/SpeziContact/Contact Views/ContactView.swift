@@ -17,12 +17,29 @@ import SwiftUI
 ///
 /// This view represents the content define in a ``Contact``.
 public struct ContactView: View {
+    @Environment(\.openURL) private var openURL
+
     private let contact: Contact
-    
+
     @State private var contactGridWidth: CGFloat = 300
     @State private var contentElementWidth: CGFloat = 100
-    
-    
+
+    private var buttonBackground: Color {
+        #if os(visionOS)
+        return Color.clear.opacity(0)
+        #else
+        return Color(uiColor: .tertiarySystemFill)
+        #endif
+    }
+
+    private var buttonForeground: Color {
+        #if os(visionOS)
+        return .secondary
+        #else
+        return .accentColor
+        #endif
+    }
+
     private var contactOptions: (grid: some RandomAccessCollection<ContactOption>, leftOverStack: some RandomAccessCollection<ContactOption>) {
         let columnCount = max(Int(contactGridWidth / max(contentElementWidth, 64)), 1)
         let (numberOfRows, leftOverElements) = contact.contactOptions.count.quotientAndRemainder(dividingBy: columnCount)
@@ -143,19 +160,19 @@ public struct ContactView: View {
             Button(action: openMaps) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .foregroundStyle(Color(uiColor: .tertiarySystemFill))
+                        .foregroundStyle(buttonBackground)
                     HStack(alignment: .top) {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("Address", bundle: .module, comment: "Contact Button Title")
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(buttonForeground)
                             Text(verbatim: CNPostalAddressFormatter().string(from: address))
                                 .multilineTextAlignment(.leading)
-                                .foregroundColor(Color(.label))
+                                .foregroundColor(buttonForeground)
                         }
                             .font(.caption)
                         Spacer()
                         Image(systemName: "location.fill")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(buttonBackground)
                             .accessibilityHidden(true)
                     }
                         .padding(15)
@@ -184,14 +201,14 @@ public struct ContactView: View {
         Button(action: contactOption.action) {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .foregroundStyle(Color(uiColor: .tertiarySystemFill))
+                    .foregroundStyle(buttonBackground)
                 VStack(spacing: 8) {
                     contactOption.image
                         .font(.title3)
                     Text(contactOption.title)
                         .font(.caption)
                 }
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(buttonForeground)
                     .padding(.vertical, 10)
             }
                 .fixedSize(horizontal: false, vertical: true)
@@ -201,11 +218,10 @@ public struct ContactView: View {
     private func openMaps() {
         guard let address = contact.address,
               let addressString = CNPostalAddressFormatter().string(from: address).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-              let url = URL(string: "maps://?address=\(addressString)"),
-              UIApplication.shared.canOpenURL(url) else {
+              let url = URL(string: "maps://?address=\(addressString)") else {
             return
         }
-        UIApplication.shared.open(url)
+        openURL(url)
     }
 }
 

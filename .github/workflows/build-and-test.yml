@@ -16,14 +16,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  buildandtest:
-    name: Build and Test Swift Package
+  buildandtest_ios:
+    name: Build and Test Swift Package iOS
     uses: StanfordSpezi/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
     with:
       artifactname: SpeziContact.xcresult
       runsonlabels: '["macOS", "self-hosted"]'
       scheme: SpeziContact
-  buildandtestlatest:
+  buildandtest_latest:
     name: Build and Test Swift Package iOS Latest
     uses: StanfordSpezi/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
     with:
@@ -33,19 +33,38 @@ jobs:
       scheme: SpeziContact
       resultBundle: SpeziContactLatest.xcresult
       artifactname: SpeziContactLatest.xcresult
-  buildandtestuitests:
-    name: Build and Test UI Tests
+  buildandtest_visionos:
+    name: Build and Test Swift Package visionOS
+    uses: StanfordSpezi/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
+    with:
+      artifactname: SpeziContact-visionOS.xcresult
+      resultBundle: SpeziContact-visionOS.xcresult
+      runsonlabels: '["macOS", "self-hosted"]'
+      scheme: SpeziContact
+      destination: 'platform=visionOS Simulator,name=Apple Vision Pro'
+  buildandtestuitests_ios:
+    name: Build and Test UI Tests iOS
     uses: StanfordSpezi/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
     with:
       artifactname: TestApp.xcresult
       runsonlabels: '["macOS", "self-hosted"]'
+      path: "Tests/UITests"
+      scheme: TestApp
+  buildandtestuitests_visionos:
+    name: Build and Test UI Tests visionOS
+    uses: StanfordSpezi/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
+    with:
+      artifactname: TestApp-visionOS.xcresult
+      resultBundle: TestApp-visionOS.xcresult
+      runsonlabels: '["macOS", "self-hosted"]'
       path: 'Tests/UITests'
       scheme: TestApp
+      destination: 'platform=visionOS Simulator,name=Apple Vision Pro'
   uploadcoveragereport:
     name: Upload Coverage Report
-    needs: [buildandtest, buildandtestuitests]
+    needs: [buildandtest_ios, buildandtest_latest, buildandtest_visionos, buildandtestuitests_ios, buildandtestuitests_visionos]
     uses: StanfordSpezi/.github/.github/workflows/create-and-upload-coverage-report.yml@v2
     with:
-      coveragereports: SpeziContact.xcresult TestApp.xcresult
+      coveragereports: SpeziContact.xcresult SpeziContactLatest.xcresult SpeziContact-visionOS.xcresult TestApp.xcresult TestApp-visionOS.xcresult
     secrets:
       token: ${{ secrets.CODECOV_TOKEN }}
