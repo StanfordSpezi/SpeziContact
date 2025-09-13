@@ -176,8 +176,7 @@ public struct ContactView: View {
         }
     }
     
-    @ViewBuilder
-    private var background: some View {
+    @ViewBuilder private var background: some View {
         if #available(iOS 26.0, watchOS 26.0, tvOS 26.0, macOS 26.0, macCatalyst 26.0, *) {
             RoundedRectangle(cornerRadius: 10)
                 .foregroundStyle(Color(uiColor: .clear))
