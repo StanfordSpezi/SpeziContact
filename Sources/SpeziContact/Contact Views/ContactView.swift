@@ -164,6 +164,7 @@ public struct ContactView: View {
                     .padding([.vertical], ProcessInfo.processInfo.operatingSystemVersion.majorVersion >= 26 ? 15 : 0)
                 }
                     .fixedSize(horizontal: false, vertical: true)
+                    .contentShape(Rectangle())
             }
                 .accessibilityLabel(Text(
                     "Address: \(Text(verbatim: CNPostalAddressFormatter().string(from: address)))",
@@ -210,6 +211,7 @@ public struct ContactView: View {
                     .padding(.vertical, 10)
             }
                 .fixedSize(horizontal: false, vertical: true)
+                .contentShape(Rectangle())
         }
     }
     
