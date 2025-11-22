@@ -9,7 +9,6 @@
 import SpeziContact
 import SwiftUI
 
-
 struct ContactsTestsView: View {
     @MainActor static let leland = Contact(
         name: PersonNameComponents(
@@ -37,15 +36,7 @@ struct ContactsTestsView: View {
             .call("+1 (650) 723-2300"),
             .text("+1 (650) 723-2300"),
             .email(addresses: ["contact@stanford.edu"]),
-            ContactOption(
-                image: Image(systemName: "safari.fill"), // swiftlint:disable:this accessibility_label_for_image
-                title: "Website",
-                action: {
-                    if let url = URL(string: "https://stanford.edu") {
-                        UIApplication.shared.open(url)
-                    }
-                }
-            )
+            .website(url: URL(string: "https://stanford.edu")!) // swiftlint:disable:this force_unwrapping
         ]
     )
 
@@ -73,7 +64,7 @@ struct ContactsTestsView: View {
             .text("+1 (234) 567-893"),
             .email(addresses: ["lelandstanford@stanford.edu"], subject: "Hi Leland!"),
             // swiftlint:disable:next accessibility_label_for_image
-            ContactOption(image: Image(systemName: "icloud.fill"), title: "Cloud", action: { })
+            ContactOption(image: Image(systemName: "icloud.fill"), title: "Cloud") {}
         ]
     )
 
