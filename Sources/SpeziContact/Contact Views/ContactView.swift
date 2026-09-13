@@ -21,16 +21,10 @@ public struct ContactView: View {
 
     private let contact: Contact
 
+    @Namespace private var namespace
+
     @State private var contactGridWidth: CGFloat = 300
     @State private var contentElementWidth: CGFloat = 100
-
-    private var buttonBackground: Color {
-        #if os(visionOS)
-        return Color.clear.opacity(0)
-        #else
-        return Color(uiColor: .tertiarySystemFill)
-        #endif
-    }
 
     private var buttonForeground: Color {
         #if os(visionOS)
@@ -159,25 +153,27 @@ public struct ContactView: View {
         if let address = contact.address {
             Button(action: openMaps) {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundStyle(buttonBackground)
+                    background
                     HStack(alignment: .top) {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("Address", bundle: .module, comment: "Contact Button Title")
                                 .foregroundColor(buttonForeground)
                             Text(verbatim: CNPostalAddressFormatter().string(from: address))
                                 .multilineTextAlignment(.leading)
-                                .foregroundColor(buttonForeground)
+                                .foregroundColor(.primary)
                         }
                             .font(.caption)
                         Spacer()
                         Image(systemName: "location.fill")
-                            .foregroundColor(buttonBackground)
+                            .foregroundColor(buttonForeground)
                             .accessibilityHidden(true)
                     }
-                        .padding(15)
+                    .padding(ProcessInfo.processInfo.operatingSystemVersion.majorVersion >= 26 ? 0 : 15)
+                    .padding([.horizontal], ProcessInfo.processInfo.operatingSystemVersion.majorVersion >= 26 ? 32 : 0)
+                    .padding([.vertical], ProcessInfo.processInfo.operatingSystemVersion.majorVersion >= 26 ? 15 : 0)
                 }
                     .fixedSize(horizontal: false, vertical: true)
+                    .contentShape(Rectangle())
             }
                 .accessibilityLabel(Text(
                     "Address: \(Text(verbatim: CNPostalAddressFormatter().string(from: address)))",
@@ -188,8 +184,25 @@ public struct ContactView: View {
             EmptyView()
         }
     }
-    
-    
+
+    @ViewBuilder private var background: some View {
+        #if os(visionOS)
+        RoundedRectangle(cornerRadius: 10)
+            .foregroundStyle(.clear)
+        #else
+        if #available(iOS 26.0, watchOS 26.0, tvOS 26.0, macOS 26.0, macCatalyst 26.0, *) {
+            RoundedRectangle(cornerRadius: 10)
+                .foregroundStyle(Color(uiColor: .clear))
+                .glassEffect(.regular)
+                .glassEffectUnion(id: "Button", namespace: namespace)
+        } else {
+            RoundedRectangle(cornerRadius: 10)
+                .foregroundStyle(Color(uiColor: .tertiarySystemFill))
+        }
+        #endif
+    }
+
+
     /// Display contact information.
     /// - Parameter contact: The `Contact` that should be displayed.
     public init(contact: Contact) {
@@ -200,8 +213,7 @@ public struct ContactView: View {
     private func contactButton(_ contactOption: ContactOption) -> some View {
         Button(action: contactOption.action) {
             ZStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .foregroundStyle(buttonBackground)
+                background
                 VStack(spacing: 8) {
                     contactOption.image
                         .font(.title3)
@@ -212,6 +224,7 @@ public struct ContactView: View {
                     .padding(.vertical, 10)
             }
                 .fixedSize(horizontal: false, vertical: true)
+                .contentShape(Rectangle())
         }
     }
     
