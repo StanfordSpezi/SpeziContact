@@ -7,10 +7,10 @@
 //
 
 import Contacts
-@_implementationOnly import MessageUI
 import SpeziPersonalInfo
 import SpeziViews
 import SwiftUI
+import UIKit
 
 
 /// Display contact information as defined by a `Contact`.
