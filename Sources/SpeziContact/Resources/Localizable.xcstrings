@@ -16,10 +16,16 @@
             "value" : " at %@"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " en %@"
+          }
+        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "på %@"
+            "value" : " på %@"
           }
         }
       }
@@ -37,6 +43,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Address"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dirección"
           }
         },
         "sv" : {
@@ -62,6 +74,12 @@
             "value" : "Address: %@"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dirección: %@"
+          }
+        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -85,6 +103,12 @@
             "value" : "Call"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llamar"
+          }
+        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -99,7 +123,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Das Gerät kann keinen Anruf tätigen. Sie können %@ anderweitig erreichen."
+            "value" : "Es kann kein Anruf getätigt werden. Sie können %@ manuell kontaktieren."
           }
         },
         "en" : {
@@ -108,10 +132,16 @@
             "value" : "The device is not setup to make a call. You can manually reach out to %@."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No es posible llamar. Puede contactar a %@ manualmente."
+          }
+        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enheten är inte inställd för att ringa. Du kan manuellt kontakta %@."
+            "value" : "Det går inte att ringa. Du kan kontakta %@ manuellt."
           }
         }
       }
@@ -131,6 +161,12 @@
             "value" : "Contact: %@"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacto: %@"
+          }
+        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -145,13 +181,19 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "E-Mail"
+            "value" : "E‑Mail"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Email"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correo electrónico"
           }
         },
         "sv" : {
@@ -168,7 +210,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Das Gerät kann keine E-Mail senden. Sie können %@ anderweitig erreichen."
+            "value" : "Es kann keine E‑Mail gesendet werden. Sie können %@ manuell kontaktieren."
           }
         },
         "en" : {
@@ -177,10 +219,16 @@
             "value" : "The device is not setup to send email. You can manually reach out to %@."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No es posible enviar correos. Puede contactar a %@ manualmente."
+          }
+        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enheten är inte inställd för att skicka e-post. Du kan manuellt kontakta %@."
+            "value" : "Det går inte att skicka e-post. Du kan kontakta %@ manuellt."
           }
         }
       }
@@ -191,7 +239,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ok"
+            "value" : "OK"
           }
         },
         "en" : {
@@ -200,10 +248,16 @@
             "value" : "Ok"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aceptar"
+          }
+        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ok"
+            "value" : "OK"
           }
         }
       }
@@ -223,10 +277,16 @@
             "value" : "Text"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mensaje"
+          }
+        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SMS"
+            "value" : "Meddelande"
           }
         }
       }
@@ -237,7 +297,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Das Gerät kann keine Nachriten senden. Sie können %@ anderweitig erreichen."
+            "value" : "Es können keine Nachrichten gesendet werden. Sie können %@ manuell kontaktieren."
           }
         },
         "en" : {
@@ -246,10 +306,16 @@
             "value" : "The device is not setup to send a text. You can manually reach out to %@."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No es posible enviar mensajes. Puede contactar a %@ manualmente."
+          }
+        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enheten är inte inställd för att skicka SMS. Du kan manuellt kontakta %@."
+            "value" : "Det går inte att skicka meddelanden. Du kan kontakta %@ manuellt."
           }
         }
       }
