@@ -7,24 +7,33 @@
 //
 
 import Contacts
-@_implementationOnly import MessageUI
 import SpeziPersonalInfo
 import SpeziViews
 import SwiftUI
+import UIKit
 
 
 /// Display contact information as defined by a `Contact`.
 ///
 /// This view represents the content define in a ``Contact``.
 public struct ContactView: View {
+    @Environment(\.openURL) private var openURL
+
     private let contact: Contact
-    
+
     @Namespace private var namespace
-    
+
     @State private var contactGridWidth: CGFloat = 300
     @State private var contentElementWidth: CGFloat = 100
-    
-    
+
+    private var buttonForeground: Color {
+        #if os(visionOS)
+        return .secondary
+        #else
+        return .accentColor
+        #endif
+    }
+
     private var contactOptions: (grid: some RandomAccessCollection<ContactOption>, leftOverStack: some RandomAccessCollection<ContactOption>) {
         let columnCount = max(Int(contactGridWidth / max(contentElementWidth, 64)), 1)
         let (numberOfRows, leftOverElements) = contact.contactOptions.count.quotientAndRemainder(dividingBy: columnCount)
@@ -148,15 +157,15 @@ public struct ContactView: View {
                     HStack(alignment: .top) {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("Address", bundle: .module, comment: "Contact Button Title")
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(buttonForeground)
                             Text(verbatim: CNPostalAddressFormatter().string(from: address))
                                 .multilineTextAlignment(.leading)
-                                .foregroundColor(Color(.label))
+                                .foregroundColor(.primary)
                         }
                             .font(.caption)
                         Spacer()
                         Image(systemName: "location.fill")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(buttonForeground)
                             .accessibilityHidden(true)
                     }
                     .padding(ProcessInfo.processInfo.operatingSystemVersion.majorVersion >= 26 ? 0 : 15)
@@ -175,8 +184,12 @@ public struct ContactView: View {
             EmptyView()
         }
     }
-    
+
     @ViewBuilder private var background: some View {
+        #if os(visionOS)
+        RoundedRectangle(cornerRadius: 10)
+            .foregroundStyle(.clear)
+        #else
         if #available(iOS 26.0, watchOS 26.0, tvOS 26.0, macOS 26.0, macCatalyst 26.0, *) {
             RoundedRectangle(cornerRadius: 10)
                 .foregroundStyle(Color(uiColor: .clear))
@@ -186,9 +199,10 @@ public struct ContactView: View {
             RoundedRectangle(cornerRadius: 10)
                 .foregroundStyle(Color(uiColor: .tertiarySystemFill))
         }
+        #endif
     }
-    
-    
+
+
     /// Display contact information.
     /// - Parameter contact: The `Contact` that should be displayed.
     public init(contact: Contact) {
@@ -206,7 +220,7 @@ public struct ContactView: View {
                     Text(contactOption.title)
                         .font(.caption)
                 }
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(buttonForeground)
                     .padding(.vertical, 10)
             }
                 .fixedSize(horizontal: false, vertical: true)
@@ -217,11 +231,10 @@ public struct ContactView: View {
     private func openMaps() {
         guard let address = contact.address,
               let addressString = CNPostalAddressFormatter().string(from: address).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-              let url = URL(string: "maps://?address=\(addressString)"),
-              UIApplication.shared.canOpenURL(url) else {
+              let url = URL(string: "maps://?address=\(addressString)") else {
             return
         }
-        UIApplication.shared.open(url)
+        openURL(url)
     }
 }
 

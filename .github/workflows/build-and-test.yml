@@ -29,6 +29,8 @@ jobs:
         platform:
           - name: iOS
             destination: 'platform=iOS Simulator,name=iPhone 17 Pro'
+          - name: visionOS
+            destination: 'platform=visionOS Simulator,name=Apple Vision Pro'
       fail-fast: false
     with:
       runsonlabels: '["macOS", "self-hosted"]'
@@ -46,6 +48,8 @@ jobs:
         platform:
           - name: iOS
             destination: 'platform=iOS Simulator,name=iPhone 17 Pro'
+          - name: visionOS
+            destination: 'platform=visionOS Simulator,name=Apple Vision Pro'
       fail-fast: false
     with:
       runsonlabels: '["macOS", "self-hosted"]'

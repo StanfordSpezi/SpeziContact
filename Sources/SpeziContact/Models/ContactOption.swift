@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-@_implementationOnly import MessageUI
 import SwiftUI
+import UIKit
 
 
 /// Customizable way to get in contact with an individual and usually connected to a `Contact`.
