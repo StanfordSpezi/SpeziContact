@@ -23,7 +23,8 @@ let package = Package(
     name: "SpeziContact",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v17)
+        .iOS(.v17),
+        .visionOS(.v1)
     ],
     products: [
         .library(name: "SpeziContact", targets: ["SpeziContact"])
