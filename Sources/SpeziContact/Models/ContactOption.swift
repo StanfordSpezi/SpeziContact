@@ -72,14 +72,12 @@ extension ContactOption {
             image: Image(systemName: "phone.fill"),
             title: String(localized: "Call", bundle: .module, comment: "Contact Option")
         ) {
-            guard let url = URL(string: "tel://\(number)"), UIApplication.shared.canOpenURL(url) else {
+            open(URL(string: "tel://\(number)")) {
                 presentAlert(
                     title: String(localized: "Call", bundle: .module),
                     message: String(localized: "Call unavailable. You can manually reach out to \(number)", bundle: .module, comment: "Call unavailable. Manual approach.")
                 )
-                return
             }
-            UIApplication.shared.open(url)
         }
     }
     
@@ -90,14 +88,12 @@ extension ContactOption {
             image: Image(systemName: "message.fill"),
             title: String(localized: "Text", bundle: .module, comment: "Contact Option")
         ) {
-            guard let url = URL(string: "sms:\(number)"), UIApplication.shared.canOpenURL(url) else {
+            open(URL(string: "sms:\(number)")) {
                 presentAlert(
                     title: String(localized: "Text", bundle: .module),
                     message: String(localized: "Text unavailable. You can manually reach out to \(number)", bundle: .module, comment: "Text unavailable. Manual approach.")
                 )
-                return
             }
-            UIApplication.shared.open(url)
         }
     }
     
@@ -111,8 +107,10 @@ extension ContactOption {
             image: Image(systemName: "envelope.fill"),
             title: String(localized: "Email", bundle: .module, comment: "Contact Option")
         ) {
-            guard let subject = (subject ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-                  let url = URL(string: "mailto:\(addresses.joined(separator: ";"))?subject=\(subject)"), UIApplication.shared.canOpenURL(url) else {
+            let url = (subject ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed).flatMap { subject in
+                URL(string: "mailto:\(addresses.joined(separator: ";"))?subject=\(subject)")
+            }
+            open(url) {
                 presentAlert(
                     title: String(localized: "Email", bundle: .module),
                     message: String(
@@ -121,9 +119,23 @@ extension ContactOption {
                         comment: "Email unavailable. Manual approach."
                     )
                 )
-                return
             }
-            UIApplication.shared.open(url)
+        }
+    }
+
+    /// Opens the URL, calling `onFailure` if there is no URL or no app on the device can open it.
+    ///
+    /// We attempt to open the URL directly instead of checking `canOpenURL(_:)` first, which is deprecated as of iOS 27.
+    @MainActor
+    private static func open(_ url: URL?, onFailure: @escaping @MainActor () -> Void) {
+        guard let url else {
+            onFailure()
+            return
+        }
+        UIApplication.shared.open(url) { success in
+            if !success {
+                onFailure()
+            }
         }
     }
 
