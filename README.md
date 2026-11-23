@@ -22,9 +22,26 @@ Views to display contact information.
 
 The Spezi Contact Swift Package provides views and infrastructure to display contact information in an application.
 
-| ![Screenshot showing a ContactsList rendered within the Spezi Template Application.](Sources/SpeziContact/SpeziContact.docc/Resources/Overview.png#gh-light-mode-only) ![Screenshot showing a ContactsList rendered within the Spezi Template Application.](Sources/SpeziContact/SpeziContact.docc/Resources/Overview~dark.png#gh-dark-mode-only) |
- |:---:|
- | A [`ContactsList`](https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contactslist) rendered in the Spezi Template Application. |
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="Sources/SpeziContact/SpeziContact.docc/Resources/Overview~dark.png">
+        <img src="Sources/SpeziContact/SpeziContact.docc/Resources/Overview.png" width="260" alt="Screenshot showing a ContactsList with two contacts.">
+      </picture>
+    </td>
+    <td align="center" width="50%">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="Sources/SpeziContact/SpeziContact.docc/Resources/Contact~dark.png">
+        <img src="Sources/SpeziContact/SpeziContact.docc/Resources/Contact.png" width="260" alt="Screenshot showing a single contact with call, text, email, website, and address options.">
+      </picture>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">A <a href="https://swiftpackageindex.com/stanfordspezi/spezicontact/documentation/spezicontact/contactslist"><code>ContactsList</code></a> with two contacts.</td>
+    <td align="center">A single contact with its contact options and address.</td>
+  </tr>
+</table>
 
 ## Setup
 

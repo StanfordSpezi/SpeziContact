@@ -50,7 +50,7 @@ struct ContactsTestsView: View {
     )
 
     @MainActor static let mock = Contact(
-        name: PersonNameComponents(givenName: "Paul", familyName: "Schmiedmayer"),
+        name: PersonNameComponents(givenName: "Jane", familyName: "Stanford"),
         image: Image(systemName: "figure.wave.circle"), // swiftlint:disable:this accessibility_label_for_image
         title: "A Title",
         description: """

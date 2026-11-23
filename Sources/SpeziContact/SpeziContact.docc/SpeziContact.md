@@ -19,8 +19,13 @@ The Spezi Contact Swift Package provides views and infrastructure to display con
 
 @Row {
     @Column {
-        @Image(source: "Overview", alt: "Screenshow showing a ContactsList rendered within the Spezi Template Application.") {
-            A ``ContactsList`` rendered in the Spezi Template Application.
+        @Image(source: "Overview", alt: "Screenshot showing a ContactsList with two contacts.") {
+            A ``ContactsList`` with two contacts.
+        }
+    }
+    @Column {
+        @Image(source: "Contact", alt: "Screenshot showing a single contact with call, text, email, website, and address options.") {
+            A single contact with its contact options and address.
         }
     }
 }

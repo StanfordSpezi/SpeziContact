@@ -18,7 +18,7 @@ final class ContactsTests: XCTestCase {
         XCTAssertTrue(app.wait(for: .runningForeground, timeout: 2.0))
 
 
-        XCTAssertTrue(app.staticTexts["Contact: Paul Schmiedmayer"].waitForExistence(timeout: 2.0))
+        XCTAssertTrue(app.staticTexts["Contact: Jane Stanford"].waitForExistence(timeout: 2.0))
         XCTAssertTrue(app.staticTexts["A Title at Stanford University"].exists)
         
         let labelPredicate = NSPredicate(format: "label CONTAINS[c] %@", "This is a description")
