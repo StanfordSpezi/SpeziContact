@@ -243,7 +243,7 @@ public struct ContactView: View {
 struct ContactView_Previews: PreviewProvider {
     static var mock: Contact {
         Contact(
-            name: PersonNameComponents(givenName: "Paul", familyName: "Schmiedmayer"),
+            name: PersonNameComponents(givenName: "Jane", familyName: "Stanford"),
             image: Image(systemName: "figure.wave.circle"),
             title: "A Title",
             description: """
