@@ -58,4 +58,24 @@ final class ContactsTests: XCTestCase {
         let maps = XCUIApplication(bundleIdentifier: "com.apple.Maps")
         XCTAssert(maps.wait(for: .runningForeground, timeout: 2))
     }
+
+    @MainActor
+    func testContactsViewWithLargestTextSize() throws {
+        let app = XCUIApplication()
+        app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launch()
+
+        XCTAssertTrue(app.wait(for: .runningForeground, timeout: 2.0))
+
+        let name = app.staticTexts["Contact: Jane Stanford"]
+        let subtitle = app.staticTexts["A Title at Stanford University"]
+        let description = app.staticTexts.element(matching: NSPredicate(format: "label CONTAINS[c] %@", "This is a description"))
+        XCTAssertTrue(name.waitForExistence(timeout: 2.0))
+        XCTAssertTrue(subtitle.exists)
+        XCTAssertTrue(description.exists)
+
+        // The header must grow with the text instead of overlapping the description below it.
+        XCTAssertLessThanOrEqual(name.frame.maxY, subtitle.frame.minY + 1)
+        XCTAssertLessThanOrEqual(subtitle.frame.maxY, description.frame.minY + 1)
+    }
 }
