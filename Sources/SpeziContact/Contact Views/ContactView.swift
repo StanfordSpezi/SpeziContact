@@ -23,6 +23,9 @@ public struct ContactView: View {
 
     @Namespace private var namespace
 
+    @ScaledMetric(relativeTo: .title3) private var profileImageSize: CGFloat = 40
+    @ScaledMetric(relativeTo: .title3) private var headerMinHeight: CGFloat = 60
+
     @State private var contactGridWidth: CGFloat = 300
     @State private var contentElementWidth: CGFloat = 100
 
@@ -76,7 +79,7 @@ public struct ContactView: View {
             header
             Divider()
             if let description = contact.description {
-                Label(verbatim: description, textStyle: .subheadline)
+                Label(verbatim: description, textStyle: .subheadline, textAlignment: .natural)
                     .padding(.vertical, 4)
             }
             HorizontalGeometryReader { _ in
@@ -94,7 +97,7 @@ public struct ContactView: View {
             UserProfileView(name: contact.name) {
                 contact.image
             }
-                .frame(height: 40)
+                .frame(width: profileImageSize, height: profileImageSize)
                 .accessibilityHidden(true)
             Spacer()
                 .frame(width: 16)
@@ -108,7 +111,6 @@ public struct ContactView: View {
                 if contact.title != nil || contact.organization != nil {
                     HStack(spacing: 0) {
                         subtitleText
-                            .lineLimit(1...2)
                             .fixedSize(horizontal: false, vertical: true)
                     }
                     .foregroundColor(Color(.secondaryLabel))
@@ -120,7 +122,7 @@ public struct ContactView: View {
             }
             Spacer()
         }
-            .frame(height: 60)
+            .frame(minHeight: headerMinHeight)
     }
     
     private var contactSection: some View {
